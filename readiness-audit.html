@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&A Internal Communications Readiness Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background: #E5E7EB;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(11, 44, 75, 0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0B2C4B 0%, #1a4d7a 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin: 0;
+        }
+        
+        .intro {
+            padding: 40px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .intro-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #C7573A;
+        }
+        
+        .intro-box p {
+            margin: 0;
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        .intro-box strong {
+            color: #C7573A;
+        }
+        
+        .questions-section {
+            padding: 40px;
+        }
+        
+        .question-block {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .question-block:last-child {
+            border-bottom: none;
+        }
+        
+        .pillar-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #0B2C4B;
+            color: white;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: #0B2C4B;
+            margin: 10px 0 15px 0;
+            line-height: 1.6;
+        }
+        
+        .rating-scale {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-button {
+            flex: 1;
+            min-width: 60px;
+            padding: 12px;
+            border: 2px solid #E5E7EB;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: normal;
+            color: #666;
+            transition: all 0.2s;
+            font-family: Verdana, Geneva, sans-serif;
+            text-align: center;
+        }
+        
+        .rating-button:hover {
+            border-color: #C7573A;
+            background: #FFF5F3;
+        }
+        
+        .rating-button.selected {
+            border: 3px solid #C7573A;
+            background: #FFF5F3;
+            color: #C7573A;
+            font-weight: bold;
+        }
+        
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.8em;
+            color: #999;
+        }
+        
+        .calculate-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 18px 50px;
+            background: #C7573A;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: Verdana, Geneva, sans-serif;
+            box-shadow: 0 4px 12px rgba(199, 87, 58, 0.3);
+        }
+        
+        .calculate-button:hover {
+            background: #a84529;
+            transform: translateY(-2px);
+        }
+        
+        .results-section {
+            background: #f8f9fa;
+            padding: 50px 40px;
+            border-top: 3px solid #C7573A;
+            display: none;
+        }
+        
+        .results-section.visible {
+            display: block;
+        }
+        
+        .results-header {
+            font-size: 2em;
+            color: #0B2C4B;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .overall-score {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 16px rgba(11, 44, 75, 0.1);
+        }
+        
+        .score-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .score-number {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+        }
+        
+        .score-label {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .score-description {
+            font-size: 1.05em;
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .guard-breakdown h3 {
+            font-size: 1.5em;
+            color: #0B2C4B;
+            margin-bottom: 25px;
+        }
+        
+        .guard-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(11, 44, 75, 0.08);
+        }
+        
+        .guard-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .guard-title {
+            flex: 1;
+        }
+        
+        .guard-title h4 {
+            font-size: 1.2em;
+            color: #0B2C4B;
+            margin: 0 0 8px 0;
+            font-weight: bold;
+        }
+        
+        .guard-title p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0;
+        }
+        
+        .guard-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        
+        .recommendations {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 6px solid #C7573A;
+            box-shadow: 0 4px 16px rgba(11, 44, 75, 0.1);
+        }
+        
+        .recommendations h3 {
+            font-size: 1.5em;
+            color: #0B2C4B;
+            margin-bottom: 20px;
+        }
+        
+        .recommendations p {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 30px;
+            background: #C7573A;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.05em;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background: #a84529;
+            transform: translateY(-2px);
+        }
+        
+        .cta-button.secondary {
+            background: #0B2C4B;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #1a4d7a;
+        }
+        
+        .reset-button {
+            display: block;
+            margin: 30px auto 0;
+            padding: 12px 30px;
+            background: white;
+            color: #0B2C4B;
+            border: 2px solid #0B2C4B;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            font-family: Verdana, Geneva, sans-serif;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .reset-button:hover {
+            background: #0B2C4B;
+            color: white;
+        }
+        
+        .footer {
+            background: #0B2C4B;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .footer p:last-child {
+            margin: 0;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>M&A Internal Communications Readiness Assessment</h1>
+            <p>Evaluate your organization's preparedness across the GUARD Framework</p>
+        </div>
+
+        <div class="intro">
+            <p><strong>Integration is where most M&A deals falter.</strong> Cultural clashes, communication breakdowns, and leadership misalignment consistently rank among the top reasons acquisitions fail to deliver expected value—yet acquiring institutions often focus exclusively on financial due diligence while underinvesting in a people-focused communications strategy.</p>
+            <p>Use this 5-minute assessment to identify your gaps.</p>
+            <div class="intro-box">
+                <p><strong>How it works:</strong> Rate each statement from <strong style="color: #555;">1 (Strongly Disagree)</strong> to <strong style="color: #555;">5 (Strongly Agree)</strong>. Your score will reveal your readiness across the five elements of the <strong style="color: #555;">GUARD Framework</strong>: Govern the Vision, Understand the Risk, Align Leadership, Retain Key Talent, and Drive Deal Value.</p>
+            </div>
+        </div>
+
+        <div class="questions-section" id="questionsSection">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <button class="calculate-button" onclick="calculateScore()">
+            Calculate My Internal Comms Readiness&nbsp;Score
+        </button>
+
+        <div class="results-section" id="resultsSection">
+            <h2 class="results-header">Your M&A Communications Readiness Score</h2>
+            
+            <div class="overall-score" id="overallScore">
+                <!-- Overall score will be inserted here -->
+            </div>
+
+            <div class="guard-breakdown">
+                <h3>Readiness by GUARD Element</h3>
+                <div id="guardBreakdown">
+                    <!-- GUARD breakdown will be inserted here -->
+                </div>
+            </div>
+
+            <div class="recommendations" id="recommendations">
+                <!-- Recommendations will be inserted here -->
+            </div>
+
+            <button class="reset-button" onclick="resetAssessment()">
+                Take Assessment Again
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>Answerhouse Advisory</p>
+            <p>M&A Internal Communications Strategy for Acquiring Banks + Credit Unions</p>
+            <p>For help closing your internal communications gaps, get in touch: <a href="mailto:info@answerhouseadvisory.com" style="color: white; text-decoration: underline;">info@answerhouseadvisory.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { id: 1, category: 'G', text: 'We have a single, approved M&A narrative that all leaders use consistently', pillar: 'Govern the Vision' },
+            { id: 2, category: 'G', text: 'Decision rights for communication approvals are clearly documented (RACI)', pillar: 'Govern the Vision' },
+            { id: 3, category: 'G', text: 'We have established SLAs for how quickly communications get reviewed and approved', pillar: 'Govern the Vision' },
+            { id: 4, category: 'G', text: 'Executive control over messaging is enforced through a governance structure', pillar: 'Govern the Vision' },
+            { id: 5, category: 'U', text: 'We have a mechanism to gauge employee sentiment in real-time during the merger', pillar: 'Understand the Risk' },
+            { id: 6, category: 'U', text: 'Key talent and high-attrition-risk employees have been identified and mapped', pillar: 'Understand the Risk' },
+            { id: 7, category: 'U', text: 'We track anxiety levels and communication gaps across the organization', pillar: 'Understand the Risk' },
+            { id: 8, category: 'U', text: 'Leadership receives regular reports on employee concerns and sentiment trends', pillar: 'Understand the Risk' },
+            { id: 9, category: 'A', text: 'All managers and executives are aligned on key messages before announcements', pillar: 'Align Leadership' },
+            { id: 10, category: 'A', text: 'We have a regular cadence (weekly huddles) for leadership communication alignment', pillar: 'Align Leadership' },
+            { id: 11, category: 'A', text: 'Escalation paths for urgent decisions are clear and fast (24-48 hour resolution)', pillar: 'Align Leadership' },
+            { id: 12, category: 'A', text: 'Leaders know exactly who to consult before making communication decisions', pillar: 'Align Leadership' },
+            { id: 13, category: 'R', text: 'Managers are trained and equipped to handle tough employee questions confidently', pillar: 'Retain Key Talent' },
+            { id: 14, category: 'R', text: 'We have compliant, pre-approved scripts for managers to use on announcement day', pillar: 'Retain Key Talent' },
+            { id: 15, category: 'R', text: 'Legal and compliance review all employment-related communications before distribution', pillar: 'Retain Key Talent' },
+            { id: 16, category: 'R', text: 'We have a plan to address and stabilize critical employees during integration', pillar: 'Retain Key Talent' },
+            { id: 17, category: 'D', text: 'We have a central hub (intranet/SharePoint) where employees can find updated information', pillar: 'Drive Deal Value' },
+            { id: 18, category: 'D', text: 'FAQs are maintained and updated continuously based on actual employee questions', pillar: 'Drive Deal Value' },
+            { id: 19, category: 'D', text: 'Communication effectiveness is measured and reported to executives regularly', pillar: 'Drive Deal Value' },
+            { id: 20, category: 'D', text: 'We have processes to maintain momentum and prevent integration stalls due to confusion', pillar: 'Drive Deal Value' }
+        ];
+
+        const responses = {};
+
+        function renderQuestions() {
+            const container = document.getElementById('questionsSection');
+            container.innerHTML = questions.map((q, index) => `
+                <div class="question-block">
+                    <span class="pillar-tag">${q.pillar}</span>
+                    <div class="question-text">${index + 1}. ${q.text}</div>
+                    <div class="rating-scale">
+                        ${[1, 2, 3, 4, 5].map(value => `
+                            <button class="rating-button" onclick="selectRating(${q.id}, ${value})" id="q${q.id}-${value}">
+                                ${value}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div class="scale-labels">
+                        <span>Strongly Disagree</span>
+                        <span>Strongly Agree</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectRating(questionId, value) {
+            responses[questionId] = value;
+            
+            // Update button styling
+            [1, 2, 3, 4, 5].forEach(v => {
+                const btn = document.getElementById(`q${questionId}-${v}`);
+                if (v === value) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+
+        function calculateScore() {
+            const answeredCount = Object.keys(responses).length;
+            if (answeredCount < questions.length) {
+                alert('Please answer all questions before viewing results.');
+                return;
+            }
+
+            const totalScore = Object.values(responses).reduce((sum, val) => sum + val, 0);
+            const maxScore = questions.length * 5;
+            const percentage = Math.round((totalScore / maxScore) * 100);
+
+            displayResults(percentage);
+            
+            document.getElementById('resultsSection').classList.add('visible');
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getScoreByCategory(category) {
+            const categoryQuestions = questions.filter(q => q.category === category);
+            const categoryResponses = categoryQuestions.map(q => responses[q.id] || 0);
+            const total = categoryResponses.reduce((sum, val) => sum + val, 0);
+            const max = categoryQuestions.length * 5;
+            return Math.round((total / max) * 100);
+        }
+
+        function getScoreColor(score) {
+            if (score >= 80) return '#2ecc71';
+            if (score >= 60) return '#f39c12';
+            return '#e74c3c';
+        }
+
+        function getScoreLabel(score) {
+            if (score >= 80) return 'STRONG';
+            if (score >= 60) return 'MODERATE RISK';
+            return 'HIGH RISK';
+        }
+
+        function getScoreIcon(score) {
+            if (score >= 80) return '✓';
+            if (score >= 60) return '⚠';
+            return '✗';
+        }
+
+        function displayResults(totalScore) {
+            const color = getScoreColor(totalScore);
+            const label = getScoreLabel(totalScore);
+            const icon = getScoreIcon(totalScore);
+
+            document.getElementById('overallScore').innerHTML = `
+                <div class="score-icon">${icon}</div>
+                <div class="score-number" style="color: ${color};">${totalScore}%</div>
+                <div class="score-label" style="color: ${color};">${label}</div>
+                <p class="score-description">
+                    ${totalScore >= 80 ? 
+                        "Your organization has strong M&A communications readiness. Focus on maintaining these systems and addressing any remaining gaps before announcement day." :
+                        totalScore >= 60 ?
+                        "You have some foundational systems in place, but significant gaps remain. Without addressing these, you risk employee confusion, talent loss, and deal value erosion." :
+                        "Your organization faces HIGH RISK of M&A communications failure. Immediate action is needed to build governance, align leadership, and protect key talent before announcement and through integration."}
+                </p>
+            `;
+
+            const guardElements = [
+                { category: 'G', title: 'Govern the Vision', desc: 'Single approved narrative & executive control' },
+                { category: 'U', title: 'Understand the Risk', desc: 'Real-time sentiment tracking & attrition mapping' },
+                { category: 'A', title: 'Align Leadership', desc: 'Consistent messaging & fast decision-making' },
+                { category: 'R', title: 'Retain Key Talent', desc: 'Manager enablement & compliant messaging' },
+                { category: 'D', title: 'Drive Deal Value', desc: 'Clear information & integration momentum' }
+            ];
+
+            document.getElementById('guardBreakdown').innerHTML = guardElements.map(elem => {
+                const score = getScoreByCategory(elem.category);
+                const color = getScoreColor(score);
+                return `
+                    <div class="guard-item" style="border-left: 6px solid ${color};">
+                        <div class="guard-item-header">
+                            <div class="guard-title">
+                                <h4>${elem.title}</h4>
+                                <p>${elem.desc}</p>
+                            </div>
+                            <div class="guard-score" style="color: ${color};">${score}%</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('recommendations').innerHTML = `
+                <h3>Recommended Next Steps</h3>
+                <p>
+                    ${totalScore >= 80 ?
+                        "Schedule a strategic review to validate your systems and identify blind spots. Even strong organizations benefit from expert guidance during high-stakes M&A transitions." :
+                        totalScore >= 60 ?
+                        "We recommend a comprehensive Readiness Audit to quantify your exact risk exposure and build a roadmap to close the gaps. Without these systems, you're vulnerable to employee anxiety, talent loss, and integration delays." :
+                        "Immediate action required. A Readiness Audit will diagnose your highest-priority gaps and provide a 90-180 day roadmap to build the governance, alignment, and enablement systems you need before announcement day."}
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-button">Schedule a Free Clarity Call</a>
+                    <a href="#" class="cta-button secondary">Learn About the Readiness Audit</a>
+                </div>
+            `;
+        }
+
+        function resetAssessment() {
+            Object.keys(responses).forEach(key => delete responses[key]);
+            document.querySelectorAll('.rating-button').forEach(btn => btn.classList.remove('selected'));
+            document.getElementById('resultsSection').classList.remove('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize questions on page load
+        renderQuestions();
+    </script>
+</body>
+</html>

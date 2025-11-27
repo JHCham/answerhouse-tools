@@ -75,6 +75,46 @@
             color: #C7573A;
         }
         
+        /* Email Gate Styling */
+        .email-gate {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+        
+        .email-gate.hidden {
+            display: none;
+        }
+        
+        .gate-content {
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .gate-content h2 {
+            font-size: 2em;
+            color: #0B2C4B;
+            margin-bottom: 20px;
+        }
+        
+        .gate-content p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .mailerlite-form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(11, 44, 75, 0.1);
+        }
+        
         .questions-section {
             padding: 40px;
         }
@@ -379,7 +419,136 @@
             </div>
         </div>
 
-        <div class="questions-section" id="questionsSection">
+        <!-- EMAIL GATE SECTION -->
+        <div class="email-gate" id="emailGate">
+            <div class="gate-content">
+                <h2>Get Your Personalized GUARD Scorecard</h2>
+                <p>Enter your details below to access the assessment and receive your complete results with personalized recommendations.</p>
+                
+                <div class="mailerlite-form-container">
+                    <!-- MAILERLITE FORM -->
+                    <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1762785");</style>
+                    <style type="text/css">
+                    .ml-form-embedSubmitLoad {
+                      display: inline-block;
+                      width: 20px;
+                      height: 20px;
+                    }
+                    .ml-form-embedSubmitLoad:after {
+                      content: " ";
+                      display: block;
+                      width: 11px;
+                      height: 11px;
+                      margin: 1px;
+                      border-radius: 50%;
+                      border: 4px solid #fff;
+                      border-color: #ffffff #ffffff #ffffff transparent;
+                      animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+                    }
+                    @keyframes ml-form-embedSubmitLoad {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                    #mlb2-33621286 .ml-form-embedWrapper {
+                      background-color: transparent !important;
+                      border: none !important;
+                      box-shadow: none !important;
+                    }
+                    #mlb2-33621286 .ml-form-embedBody {
+                      padding: 0 !important;
+                    }
+                    #mlb2-33621286 .ml-form-embedContent h4 {
+                      display: none !important;
+                    }
+                    #mlb2-33621286 .ml-form-embedContent p {
+                      display: none !important;
+                    }
+                    #mlb2-33621286 .ml-form-fieldRow input {
+                      background-color: #ffffff !important;
+                      color: #333333 !important;
+                      border: 2px solid #E5E7EB !important;
+                      border-radius: 8px !important;
+                      font-family: Verdana, Geneva, sans-serif !important;
+                      font-size: 16px !important;
+                      padding: 14px !important;
+                      width: 100% !important;
+                    }
+                    #mlb2-33621286 .ml-form-embedSubmit button {
+                      background-color: #C7573A !important;
+                      border: none !important;
+                      border-radius: 8px !important;
+                      color: #ffffff !important;
+                      font-family: Verdana, Geneva, sans-serif !important;
+                      font-size: 18px !important;
+                      font-weight: bold !important;
+                      padding: 16px 40px !important;
+                      width: 100% !important;
+                      cursor: pointer;
+                      transition: all 0.3s;
+                    }
+                    #mlb2-33621286 .ml-form-embedSubmit button:hover {
+                      background-color: #a84529 !important;
+                      transform: translateY(-2px);
+                    }
+                    </style>
+                    
+                    <div id="mlb2-33621286" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-33621286">
+                      <div class="ml-form-align-center">
+                        <div class="ml-form-embedWrapper embedForm">
+                          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                            <div class="ml-form-embedContent" style="display: none;">
+                              <h4>Get Your Personalized GUARD Scorecard</h4>
+                              <p><span style="color: rgb(255, 255, 255);">Enter your email address to access the Readiness Assessment and receive your results.</span></p>
+                            </div>
+                            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1904468/forms/171615827479496192/subscribe" data-code="" method="post" target="_blank">
+                              <div class="ml-form-formContent">
+                                <div class="ml-form-fieldRow ml-last-item">
+                                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                    <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Enter your email address" autocomplete="email">
+                                  </div>
+                                </div>
+                              </div>
+                              <input type="hidden" name="ml-submit" value="1">
+                              <div class="ml-form-embedSubmit">
+                                <button type="submit" class="primary">Start My Assessment</button>
+                                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                  <div class="ml-form-embedSubmitLoad"></div>
+                                  <span class="sr-only">Loading...</span>
+                                </button>
+                              </div>
+                              <input type="hidden" name="anticsrf" value="true">
+                            </form>
+                          </div>
+                          <div class="ml-form-successBody row-success" style="display: none">
+                            <div class="ml-form-successContent">
+                              <h4>Thank you!</h4>
+                              <p>Loading your assessment...</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <script>
+                    function ml_webform_success_33621286() {
+                      var $ = ml_jQuery || jQuery;
+                      $('.ml-subscribe-form-33621286 .row-success').show();
+                      $('.ml-subscribe-form-33621286 .row-form').hide();
+                      // Trigger the assessment to unlock
+                      setTimeout(function() {
+                        handleMailerLiteSuccess();
+                      }, 1000);
+                    }
+                    </script>
+                    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+                    <script>
+                    fetch("https://assets.mailerlite.com/jsonp/1904468/forms/171615827479496192/takel")
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="questions-section" id="questionsSection" style="display: none;">
             <!-- Questions will be inserted here by JavaScript -->
         </div>
 
@@ -418,6 +587,20 @@
     </div>
 
     <script>
+        // Gate bypass function - this unlocks the assessment after form submission
+        function bypassGate() {
+            document.getElementById('emailGate').classList.add('hidden');
+            document.getElementById('questionsSection').style.display = 'block';
+            document.getElementById('calculateButton').style.display = 'block';
+            renderQuestions();
+        }
+        
+        // MailerLite form submission handler
+        // This function will be called when MailerLite form is successfully submitted
+        function handleMailerLiteSuccess() {
+            bypassGate();
+        }
+
         const questions = [
             { id: 1, category: 'G', text: 'We have a single, approved M&A narrative that all leaders use consistently', pillar: 'Govern the Vision' },
             { id: 2, category: 'G', text: 'Decision rights for communication approvals are clearly documented (RACI)', pillar: 'Govern the Vision' },
@@ -570,7 +753,7 @@
                         "Schedule a strategic review to validate your systems and identify blind spots. Even strong organizations benefit from expert guidance during high-stakes M&A transitions." :
                         totalScore >= 60 ?
                         "We recommend a comprehensive Readiness Audit to quantify your exact risk exposure and build a roadmap to close the gaps. Without these systems, you're vulnerable to employee anxiety, talent loss, and integration delays." :
-                        "Immediate action required. A Readiness Audit will diagnose your highest-priority gaps and provide a 90-180 day roadmap to build the governance, alignment, and enablement systems you need before announcement day."}
+                        "Immediate action is needed. A Readiness Audit will diagnose your highest-priority gaps and provide a 90-180 day roadmap to build the governance, alignment, and enablement systems you need before announcement day."}
                 </p>
                 <div class="cta-buttons">
                     <a href="#" class="cta-button">Schedule a Free Clarity Call</a>

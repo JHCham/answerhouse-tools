@@ -595,6 +595,7 @@
             Calculate My Internal Comms Readiness&nbsp;Score
         </button>
 
+
         <div class="results-section" id="resultsSection">
             <h2 class="results-header">Your M&A Communications Readiness Score</h2>
 
@@ -791,17 +792,16 @@
             }).join('');
 
             document.getElementById('recommendations').innerHTML = `
-                <h3>Recommended Next Steps</h3>
+                <h3>What's Next?</h3>
                 <p>
                     ${totalScore >= 80 ?
-                    "Schedule a strategic review to validate your systems and identify blind spots. Even strong organizations benefit from expert guidance during high-stakes M&A transitions." :
+                    "Your score shows strong M&A communications readiness. A free 30-minute Clarity Call can help you validate your approach and identify any blind spots before your acquisition." :
                     totalScore >= 60 ?
-                        "We recommend a comprehensive Readiness Audit to quantify your exact risk exposure and build a roadmap to close the gaps. Without these systems, you're vulnerable to employee anxiety, talent loss, and integration delays." :
-                        "Immediate action is needed. A Readiness Audit will diagnose your highest-priority gaps and provide a 90-180 day roadmap to build the governance, alignment, and enablement systems you need before announcement day."}
+                        "Your score reveals both strengths and opportunities. A free 30-minute Clarity Call can help you prioritize which gaps to address first and discuss whether the GUARD Framework fits your acquisition timeline." :
+                        "Your score indicates significant communications gaps that could impact your deal. A free 30-minute Clarity Call can help you understand your highest-priority risks and explore solutions before announcement day."}
                 </p>
                 <div class="cta-buttons">
-                    <a href="#" class="cta-button">Schedule a Free Clarity Call</a>
-                    <a href="#" class="cta-button secondary">Learn About the Readiness Audit</a>
+                    <a href="https://cal.com/answerhouseadvisory/30min" class="cta-button">Schedule Your Free Clarity Call</a>
                 </div>
             `;
         }

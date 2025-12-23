@@ -542,7 +542,7 @@
                                                     class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
                                                     <input aria-label="email" aria-required="true" type="email"
                                                         class="form-control" data-inputmask="" name="fields[email]"
-                                                        placeholder="Enter your email address" autocomplete="email">
+                                                        placeholder="Email Address" autocomplete="email">
                                                 </div>
                                             </div>
                                         </div>
@@ -570,13 +570,33 @@
 
                     <script>
                         function ml_webform_success_33621286() {
-                            var $ = ml_jQuery || jQuery;
-                            $('.ml-subscribe-form-33621286 .row-success').show();
-                            $('.ml-subscribe-form-33621286 .row-form').hide();
+                            try {
+                                var $ = ml_jQuery || jQuery;
+                                $('.ml-subscribe-form-33621286 .row-success').show();
+                                $('.ml-subscribe-form-33621286 .row-form').hide();
+                            } catch (e) {
+                                console.log('jQuery not available, proceeding anyway');
+                            }
                             setTimeout(function () {
                                 handleMailerLiteSuccess();
-                            }, 1000);
+                            }, 1500);
                         }
+
+                        // Backup: Also listen for form submission
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const mlForm = document.querySelector('.ml-block-form');
+                            if (mlForm) {
+                                mlForm.addEventListener('submit', function (e) {
+                                    setTimeout(function () {
+                                        // Check if success message is showing
+                                        const successDiv = document.querySelector('.ml-form-successBody');
+                                        if (successDiv && successDiv.style.display !== 'none') {
+                                            handleMailerLiteSuccess();
+                                        }
+                                    }, 2000);
+                                });
+                            }
+                        });
                     </script>
                     <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
                         type="text/javascript"></script>

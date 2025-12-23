@@ -660,7 +660,9 @@
     </div>
 
     <script>
+        // DEFINE THIS FIRST - before MailerLite scripts try to call it
         function handleMailerLiteSuccess() {
+            console.log('Unlocking assessment...');
             document.getElementById('emailGate').classList.add('hidden');
             document.getElementById('questionsSection').style.display = 'block';
             renderQuestions();

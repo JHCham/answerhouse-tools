@@ -108,11 +108,44 @@
             margin-bottom: 30px;
         }
 
-        .mailerlite-form-container {
+        .simple-form-container {
             background: white;
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 4px 16px rgba(11, 44, 75, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .simple-form-container input {
+            background-color: #ffffff;
+            color: #333333;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 16px;
+            padding: 14px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .simple-form-container button {
+            background-color: #C7573A;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 16px 40px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .simple-form-container button:hover {
+            background-color: #a84529;
+            transform: translateY(-2px);
         }
 
         .questions-section {
@@ -403,6 +436,10 @@
             font-size: 0.9em;
             opacity: 0.9;
         }
+
+        .hidden-iframe {
+            display: none;
+        }
     </style>
 </head>
 
@@ -428,203 +465,30 @@
             </div>
         </div>
 
-        <!-- EMAIL GATE SECTION -->
         <div class="email-gate" id="emailGate">
             <div class="gate-content">
                 <h2>Get Your Personalized GUARD Scorecard</h2>
                 <p>Enter your details below to access the assessment and receive your complete results with personalized
                     recommendations.</p>
 
-                <div class="mailerlite-form-container">
-                    <!-- MAILERLITE FORM -->
-                    <style type="text/css">
-                        @import url("https://assets.mlcdn.com/fonts.css?version=1762785");
-
-                        .ml-form-embedSubmitLoad {
-                            display: inline-block;
-                            width: 20px;
-                            height: 20px;
-                        }
-
-                        .ml-form-embedSubmitLoad:after {
-                            content: " ";
-                            display: block;
-                            width: 11px;
-                            height: 11px;
-                            margin: 1px;
-                            border-radius: 50%;
-                            border: 4px solid #fff;
-                            border-color: #ffffff #ffffff #ffffff transparent;
-                            animation: ml-form-embedSubmitLoad 1.2s linear infinite;
-                        }
-
-                        @keyframes ml-form-embedSubmitLoad {
-                            0% {
-                                transform: rotate(0deg);
-                            }
-
-                            100% {
-                                transform: rotate(360deg);
-                            }
-                        }
-
-                        #mlb2-33621286 .ml-form-embedWrapper {
-                            background-color: transparent !important;
-                            border: none !important;
-                            box-shadow: none !important;
-                        }
-
-                        #mlb2-33621286 .ml-form-embedBody {
-                            padding: 0 !important;
-                        }
-
-                        #mlb2-33621286 .ml-form-embedContent h4 {
-                            display: none !important;
-                        }
-
-                        #mlb2-33621286 .ml-form-embedContent p {
-                            display: none !important;
-                        }
-
-                        #mlb2-33621286 .ml-form-fieldRow input {
-                            background-color: #ffffff !important;
-                            color: #333333 !important;
-                            border: 2px solid #E5E7EB !important;
-                            border-radius: 8px !important;
-                            font-family: Verdana, Geneva, sans-serif !important;
-                            font-size: 16px !important;
-                            padding: 14px !important;
-                            width: 100% !important;
-                        }
-
-                        #mlb2-33621286 .ml-form-embedSubmit button {
-                            background-color: #C7573A !important;
-                            border: none !important;
-                            border-radius: 8px !important;
-                            color: #ffffff !important;
-                            font-family: Verdana, Geneva, sans-serif !important;
-                            font-size: 18px !important;
-                            font-weight: bold !important;
-                            padding: 16px 40px !important;
-                            width: 100% !important;
-                            cursor: pointer;
-                            transition: all 0.3s;
-                        }
-
-                        #mlb2-33621286 .ml-form-embedSubmit button:hover {
-                            background-color: #a84529 !important;
-                            transform: translateY(-2px);
-                        }
-                    </style>
-
-                    <div id="mlb2-33621286" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-33621286">
-                        <div class="ml-form-align-center">
-                            <div class="ml-form-embedWrapper embedForm">
-                                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                                    <div class="ml-form-embedContent" style="display: none;">
-                                        <h4>Get Your Personalized GUARD Scorecard</h4>
-                                        <p><span style="color: rgb(255, 255, 255);">Enter your email address to access
-                                                the Readiness Assessment and receive your results.</span></p>
-                                    </div>
-                                    <form class="ml-block-form"
-                                        action="https://assets.mailerlite.com/jsonp/1904468/forms/171615827479496192/subscribe"
-                                        data-code="" method="post" target="_blank">
-                                        <div class="ml-form-formContent">
-                                            <div class="ml-form-fieldRow">
-                                                <div class="ml-field-group ml-field-name ml-validate-required">
-                                                    <input aria-label="name" aria-required="true" type="text"
-                                                        class="form-control" data-inputmask="" name="fields[name]"
-                                                        placeholder="First Name" autocomplete="given-name">
-                                                </div>
-                                            </div>
-                                            <div class="ml-form-fieldRow ml-last-item">
-                                                <div
-                                                    class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                                                    <input aria-label="email" aria-required="true" type="email"
-                                                        class="form-control" data-inputmask="" name="fields[email]"
-                                                        placeholder="Email Address" autocomplete="email">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="ml-submit" value="1">
-                                        <div class="ml-form-embedSubmit">
-                                            <button type="submit" class="primary">Start My Assessment</button>
-                                            <button disabled="disabled" style="display: none;" type="button"
-                                                class="loading">
-                                                <div class="ml-form-embedSubmitLoad"></div>
-                                                <span class="sr-only">Loading...</span>
-                                            </button>
-                                        </div>
-                                        <input type="hidden" name="anticsrf" value="true">
-                                    </form>
-                                </div>
-                                <div class="ml-form-successBody row-success" style="display: none">
-                                    <div class="ml-form-successContent">
-                                        <h4>Thank you!</h4>
-                                        <p>Loading your assessment...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script>
-                        // Primary success callback
-                        function ml_webform_success_33621286() {
-                            console.log('MailerLite success callback triggered');
-                            try {
-                                var $ = ml_jQuery || jQuery;
-                                $('.ml-subscribe-form-33621286 .row-success').show();
-                                $('.ml-subscribe-form-33621286 .row-form').hide();
-                            } catch (e) {
-                                console.log('jQuery not available:', e);
-                            }
-                            handleMailerLiteSuccess();
-                        }
-
-                        // Monitor for success message appearing
-                        function checkForSuccess() {
-                            const successDiv = document.querySelector('.ml-form-successBody.row-success');
-                            if (successDiv && window.getComputedStyle(successDiv).display !== 'none') {
-                                console.log('Success message detected, unlocking assessment');
-                                handleMailerLiteSuccess();
-                                return true;
-                            }
-                            return false;
-                        }
-
-                        // Backup: Monitor form submission
-                        document.addEventListener('DOMContentLoaded', function () {
-                            const mlForm = document.querySelector('.ml-block-form');
-                            if (mlForm) {
-                                mlForm.addEventListener('submit', function (e) {
-                                    console.log('Form submitted, monitoring for success...');
-                                    let attempts = 0;
-                                    const checkInterval = setInterval(function () {
-                                        attempts++;
-                                        if (checkForSuccess() || attempts > 10) {
-                                            clearInterval(checkInterval);
-                                        }
-                                    }, 500);
-                                });
-                            }
-                        });
-                    </script>
-                    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
-                        type="text/javascript"></script>
-                    <script>
-                        fetch("https://assets.mailerlite.com/jsonp/1904468/forms/171615827479496192/takel")
-                    </script>
+                <div class="simple-form-container">
+                    <form id="leadForm"
+                        action="https://assets.mailerlite.com/jsonp/1904468/forms/171615827479496192/subscribe"
+                        method="POST" target="hidden_iframe">
+                        <input type="text" name="fields[name]" id="firstName" placeholder="First Name" required>
+                        <input type="email" name="fields[email]" id="email" placeholder="Email Address" required>
+                        <input type="hidden" name="ml-submit" value="1">
+                        <button type="submit">Start My Assessment</button>
+                    </form>
+                    <iframe name="hidden_iframe" class="hidden-iframe"></iframe>
                 </div>
             </div>
         </div>
 
         <div class="questions-section" id="questionsSection" style="display: none;">
-            <!-- Questions will be inserted here by JavaScript -->
         </div>
 
-        <button class="calculate-button" id="calculateButton" style="display: none !important;"
-            onclick="calculateScore()">
+        <button class="calculate-button" id="calculateButton" onclick="calculateScore()" style="display: none;">
             Calculate My Internal Comms Readiness Score
         </button>
 
@@ -632,18 +496,15 @@
             <h2 class="results-header">Your M&A Communications Readiness Score</h2>
 
             <div class="overall-score" id="overallScore">
-                <!-- Overall score will be inserted here -->
             </div>
 
             <div class="guard-breakdown">
                 <h3>Readiness by GUARD Element</h3>
                 <div id="guardBreakdown">
-                    <!-- GUARD breakdown will be inserted here -->
                 </div>
             </div>
 
             <div class="recommendations" id="recommendations">
-                <!-- Recommendations will be inserted here -->
             </div>
 
             <button class="reset-button" onclick="resetAssessment()">
@@ -660,14 +521,6 @@
     </div>
 
     <script>
-        // DEFINE THIS FIRST - before MailerLite scripts try to call it
-        function handleMailerLiteSuccess() {
-            console.log('Unlocking assessment...');
-            document.getElementById('emailGate').classList.add('hidden');
-            document.getElementById('questionsSection').style.display = 'block';
-            renderQuestions();
-        }
-
         const questions = [
             { id: 1, category: 'G', text: 'We have a single, approved M&A narrative that all leaders use consistently', pillar: 'Govern the Vision' },
             { id: 2, category: 'G', text: 'Decision rights for communication approvals are clearly documented (RACI)', pillar: 'Govern the Vision' },
@@ -692,6 +545,18 @@
         ];
 
         const responses = {};
+
+        // Simple form submission handler
+        document.getElementById('leadForm').addEventListener('submit', function (e) {
+            // Let the form submit to MailerLite in the hidden iframe
+            // Then immediately unlock the assessment
+            setTimeout(function () {
+                document.getElementById('emailGate').classList.add('hidden');
+                document.getElementById('questionsSection').style.display = 'block';
+                document.getElementById('calculateButton').style.display = 'block';
+                renderQuestions();
+            }, 500);
+        });
 
         function renderQuestions() {
             const container = document.getElementById('questionsSection');
@@ -818,4 +683,22 @@
                     ${totalScore >= 80 ?
                     "Your score shows strong M&A communications readiness. A free 30-minute Clarity Call can help you validate your approach and identify any blind spots before your acquisition." :
                     totalScore >= 60 ?
-                        "Your score reveals both strengths and opportunities. A free 30-minute Clarity Call can help you prioritize which gaps to address first
+                        "Your score reveals both strengths and opportunities. A free 30-minute Clarity Call can help you prioritize which gaps to address first and discuss whether the GUARD Framework fits your acquisition timeline." :
+                        "Your score indicates significant communications gaps that could impact your deal. A free 30-minute Clarity Call can help you understand your highest-priority risks and explore solutions before announcement day."}
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://cal.com/answerhouseadvisory/30min" class="cta-button">Schedule Your Free Clarity Call</a>
+                </div>
+            `;
+        }
+
+        function resetAssessment() {
+            Object.keys(responses).forEach(key => delete responses[key]);
+            document.querySelectorAll('.rating-button').forEach(btn => btn.classList.remove('selected'));
+            document.getElementById('resultsSection').classList.remove('visible');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

@@ -569,31 +569,43 @@
                     </div>
 
                     <script>
+                        // Primary success callback
                         function ml_webform_success_33621286() {
+                            console.log('MailerLite success callback triggered');
                             try {
                                 var $ = ml_jQuery || jQuery;
                                 $('.ml-subscribe-form-33621286 .row-success').show();
                                 $('.ml-subscribe-form-33621286 .row-form').hide();
                             } catch (e) {
-                                console.log('jQuery not available, proceeding anyway');
+                                console.log('jQuery not available:', e);
                             }
-                            setTimeout(function () {
-                                handleMailerLiteSuccess();
-                            }, 1500);
+                            handleMailerLiteSuccess();
                         }
 
-                        // Backup: Also listen for form submission
+                        // Monitor for success message appearing
+                        function checkForSuccess() {
+                            const successDiv = document.querySelector('.ml-form-successBody.row-success');
+                            if (successDiv && window.getComputedStyle(successDiv).display !== 'none') {
+                                console.log('Success message detected, unlocking assessment');
+                                handleMailerLiteSuccess();
+                                return true;
+                            }
+                            return false;
+                        }
+
+                        // Backup: Monitor form submission
                         document.addEventListener('DOMContentLoaded', function () {
                             const mlForm = document.querySelector('.ml-block-form');
                             if (mlForm) {
                                 mlForm.addEventListener('submit', function (e) {
-                                    setTimeout(function () {
-                                        // Check if success message is showing
-                                        const successDiv = document.querySelector('.ml-form-successBody');
-                                        if (successDiv && successDiv.style.display !== 'none') {
-                                            handleMailerLiteSuccess();
+                                    console.log('Form submitted, monitoring for success...');
+                                    let attempts = 0;
+                                    const checkInterval = setInterval(function () {
+                                        attempts++;
+                                        if (checkForSuccess() || attempts > 10) {
+                                            clearInterval(checkInterval);
                                         }
-                                    }, 2000);
+                                    }, 500);
                                 });
                             }
                         });
